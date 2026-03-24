@@ -31,8 +31,12 @@ export default function Index() {
         ) : (
           <View className="flex-1 mt-5">
             <SearchBar 
-              onPress={() => router.push('/search')}
-              placeholder="Search for movies, TV shows, actors..." />
+                  onPress={() => router.push('/search')}
+                  placeholder="Search for movies, TV shows, actors..." 
+                  value={""} 
+                  onChangeText={function (text: string): void {
+                    throw new Error("Function not implemented.");
+                  } } />
 
             <>
               <Text className="text-lg text-white font-bold mt-5 mb-3">Trending Movies</Text>
@@ -52,7 +56,6 @@ export default function Index() {
                   marginBottom: 10 
                 }}
                 className="mt-2 pb-32"
-                scrollEnabled={false}
               />
 
             </>
