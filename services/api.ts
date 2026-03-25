@@ -23,3 +23,23 @@ const endpoint = query ? `${TMDB_CONFIG.BASE_URL}/search/movie?query=${encodeURI
     const data = await response.json();
     return data.results;
 }
+
+export const fetchMovieDetails = async (movieId: string) => {
+  try {
+      const response = await fetch(`${TMDB_CONFIG.BASE_URL}/movie/${movieId}`, {
+        method: 'GET',
+        headers: TMDB_CONFIG.headers
+    });
+
+    if (!response.ok) {
+        // @ts-ignore
+        throw new Error('Failed to fetch movie details', response.statusText);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    // @ts-ignore
+    throw new Error(`Error fetching movie details: ${error.message}`);
+  }
+}
